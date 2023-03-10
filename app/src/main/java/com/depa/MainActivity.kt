@@ -1,5 +1,6 @@
 package com.depa
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
@@ -29,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val settingsActions: ImageView=findViewById(R.id.logOutButton)
+
+        val logOutButton:ImageView=findViewById(R.id.logOutButton)
         toolbar=findViewById(R.id.myToolBar)
         setSupportActionBar(toolbar)
         drawerLayout=findViewById(R.id.drawer)
@@ -43,8 +45,9 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController,drawerLayout)
         navigationView.setupWithNavController(navController)
 
-        settingsActions.setOnClickListener(){
-            Toast.makeText(this,"Sesion cerrada",Toast.LENGTH_SHORT).show()
+        logOutButton.setOnClickListener(){
+            val intent= Intent(this, LoginActivity::class.java)
+            startActivity(intent)
         }
 
     }

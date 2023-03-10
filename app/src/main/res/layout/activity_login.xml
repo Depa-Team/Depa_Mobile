@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity"
+    android:background="@color/white">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Administra tu depa con"
+        android:gravity="center"
+        android:layout_marginTop="45dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Depa"
+        android:fontFamily="@font/harlowsi"
+        android:gravity="center"
+        android:textSize="60dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/depa_def"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Empieza a administrar"
+        android:layout_marginTop="45dp"
+        android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Inicia Sesion"
+       android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:textColor="#4C4C4C"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correo Electronico"
+        android:layout_marginTop="75dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        android:drawableRight="@drawable/ic_person"
+        android:drawableTint="@color/black"
+        android:backgroundTint="@color/black"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Constraseña"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:drawableRight="@drawable/baseline_vpn_key_24"
+        android:drawableTint="@color/black"
+        android:backgroundTint="@color/black"
+        android:inputType="textPassword"
+        />
+    <Button
+        android:id="@+id/logInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/depa_def"
+        android:text="Iniciar sesion"
+        android:textColor="@color/white"
+        android:layout_marginTop="30dp"
+        android:layout_marginHorizontal="25dp"/>
+
+    <TextView
+        android:id="@+id/signInRedirectButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Crear una cuenta!"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+
+
+
+
+
+</LinearLayout>

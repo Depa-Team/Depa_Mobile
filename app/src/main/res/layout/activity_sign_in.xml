@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SignInActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=" Depa"
+        android:fontFamily="@font/harlowsi"
+        android:gravity="center"
+        android:textSize="40dp"
+        android:layout_marginTop="35dp"
+        android:textColor="@color/depa_def"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Unete a nosotros"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crea una cuenta"
+        android:layout_marginLeft="25dp"
+        android:gravity="center"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:textColor="#4C4C4C"
+        />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre completo"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        android:drawableRight="@drawable/ic_person"
+        android:backgroundTint="@color/black"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Correo Electronico"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        android:drawableRight="@drawable/baseline_email_24"
+        android:drawableTint="@color/black"
+        android:backgroundTint="@color/black"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Constraseña"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:drawableRight="@drawable/baseline_vpn_key_24"
+        android:drawableTint="@color/black"
+        android:backgroundTint="@color/black"
+        android:inputType="textPassword"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Elige tu plan"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="10dp">
+
+        <Button
+            android:id="@+id/standardPlan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/depa_def"
+            android:text="Standar"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"/>
+        <Button
+            android:id="@+id/proPlan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/depa_def"
+            android:text="pro"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"/>
+        <Button
+            android:id="@+id/premiumPlan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:backgroundTint="@color/depa_def"
+            android:text="Premium"
+            android:textColor="@color/white"
+            android:layout_margin="10dp"/>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/signInButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/depa_def"
+        android:text="Crear cuenta"
+        android:textColor="@color/white"
+        android:layout_marginTop="18dp"
+        android:layout_marginHorizontal="25dp"/>
+
+
+
+
+    <TextView
+        android:id="@+id/logInRedirectButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Ya tienes una cuenta?\n Inicia Sesion"
+        android:layout_marginTop="20dp"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        />
+
+</LinearLayout>
