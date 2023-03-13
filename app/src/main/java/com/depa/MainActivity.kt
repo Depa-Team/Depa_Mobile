@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
@@ -30,7 +31,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         val logOutButton:ImageView=findViewById(R.id.logOutButton)
         toolbar=findViewById(R.id.myToolBar)
         setSupportActionBar(toolbar)
@@ -44,6 +44,8 @@ class MainActivity : AppCompatActivity() {
         appBarConfiguration= AppBarConfiguration(setOf(R.id.id_home_fragment,R.id.id_profile_fragment,R.id.id_settings_fragment),drawerLayout)
         setupActionBarWithNavController(navController,drawerLayout)
         navigationView.setupWithNavController(navController)
+
+        TODO("Ingresar a diferentes vistas")
 
         logOutButton.setOnClickListener(){
             val intent= Intent(this, LoginActivity::class.java)
