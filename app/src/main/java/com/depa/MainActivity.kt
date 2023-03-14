@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController:NavController
     private lateinit var navHostFragment:NavHostFragment
     private lateinit var appBarConfiguration:AppBarConfiguration
+    private lateinit var userType: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -45,7 +46,11 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController,drawerLayout)
         navigationView.setupWithNavController(navController)
 
-        TODO("Ingresar a diferentes vistas")
+        if (::userType.isInitialized) {
+            userType.append("hOLA")
+        }
+
+
 
         logOutButton.setOnClickListener(){
             val intent= Intent(this, LoginActivity::class.java)

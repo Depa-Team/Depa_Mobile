@@ -4,8 +4,10 @@ import Beans.Post
 import Beans.Usuarios
 import Interface.PlaceHolder
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
@@ -33,7 +35,24 @@ class LoginActivity : AppCompatActivity() {
         val userPassword:EditText=findViewById(R.id.userPassword)
 
         val logInButton: Button=findViewById(R.id.logInButton)
+        val checkBoxCredenciales: CheckBox=findViewById(R.id.checkboxCredenciales)
         val signInRedirectButton: TextView=findViewById(R.id.signInRedirectButton)
+
+        val sharedPref=getSharedPreferences("myPref", MODE_PRIVATE)
+
+
+
+        val check: Boolean=sharedPref.getString("val","false").toBoolean()
+
+        if (check){
+            userEmail.setText(sharedPref.getString("email","").toString())
+            userPassword.setText(sharedPref.getString("password","").toString())
+            checkBoxCredenciales.isChecked=true
+        }else{
+            userEmail.setText(null)
+            userPassword.setText(null)
+            checkBoxCredenciales.isChecked=false
+        }
 
         val intent= Intent(this, MainActivity::class.java)
 
@@ -50,6 +69,18 @@ class LoginActivity : AppCompatActivity() {
                         if(UserList!=null){
                             for(user in UserList){
                                 if(userEmail.text.toString() == user.email && userPassword.text.toString()==user.password){
+                                    val editor=sharedPref.edit()
+                                    if (checkBoxCredenciales.isChecked){
+                                        editor.putString("val","true")
+                                        editor.putString("email",userEmail.text.toString())
+                                        editor.putString("password",userPassword.text.toString())
+                                    }
+                                    else{
+                                        editor.putString("val","")
+                                        editor.putString("email","")
+                                        editor.putString("password","")
+                                    }
+                                    editor.commit()
                                     Toast.makeText(this@LoginActivity,user.type.toString(),Toast.LENGTH_SHORT).show()
                                     startActivity(intent)
                                     return

@@ -91,6 +91,17 @@
         android:backgroundTint="@color/black"
         android:inputType="textPassword"
         />
+
+    <CheckBox
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recordar credenciales"
+        android:id="@+id/checkboxCredenciales"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="5dp"
+        android:buttonTint="@color/depa_def"/>
+
+
     <Button
         android:id="@+id/logInButton"
         android:layout_width="match_parent"
@@ -98,7 +109,7 @@
         android:backgroundTint="@color/depa_def"
         android:text="Iniciar sesion"
         android:textColor="@color/white"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="10dp"
         android:layout_marginHorizontal="25dp"/>
 
     <TextView
