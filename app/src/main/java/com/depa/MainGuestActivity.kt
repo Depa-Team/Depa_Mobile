@@ -63,7 +63,7 @@ class MainGuestActivity : AppCompatActivity() {
 
         val userType:TextView=findViewById(R.id.typeUser)
         val userName:TextView=findViewById(R.id.channelName)
-        userType.setText(sharedPrefCurrentSesion.getString("type",""))
+        userType.setText("Inquilino")
         userName.setText(sharedPrefCurrentSesion.getString("name",""))
 
 

@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
         val sharedPrefCurrentSesion=getSharedPreferences("myCurrentSesion", MODE_PRIVATE)
         val userType:TextView=findViewById(R.id.typeUser)
         val userName:TextView=findViewById(R.id.channelName)
-        userType.setText(sharedPrefCurrentSesion.getString("type",""))
+        userType.setText("Administrador")
         userName.setText(sharedPrefCurrentSesion.getString("name",""))
 
         val navController=findNavController(R.id.fragmentContainerView)
