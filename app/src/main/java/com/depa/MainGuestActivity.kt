@@ -17,7 +17,7 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.navigation.NavigationView
 
-class MainActivity : AppCompatActivity() {
+class MainGuestActivity : AppCompatActivity() {
 
     private lateinit var toolbar: Toolbar
     private lateinit var drawerLayout: DrawerLayout
@@ -26,20 +26,20 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navHostFragment:NavHostFragment
     private lateinit var appBarConfiguration:AppBarConfiguration
 
-    override fun onCreate(savedInstanceState: Bundle?) {
 
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_main_guest)
 
         val logOutButton:ImageView=findViewById(R.id.logOutButton)
 
         toolbar=findViewById(R.id.myToolBar)
         setSupportActionBar(toolbar)
-        drawerLayout=findViewById(R.id.drawer)
-        navigationView=findViewById(R.id.navigationView)
+        drawerLayout=findViewById(R.id.drawerGuest)
+        navigationView=findViewById(R.id.navigationGuestView)
 
 
-        navHostFragment=supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
+        navHostFragment=supportFragmentManager.findFragmentById(R.id.fragmentContainerGuestView) as NavHostFragment
 
         navController=navHostFragment.navController
 
@@ -55,18 +55,19 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+
     }
-
-
 
     override fun onSupportNavigateUp(): Boolean {
         val sharedPrefCurrentSesion=getSharedPreferences("myCurrentSesion", MODE_PRIVATE)
+
         val userType:TextView=findViewById(R.id.typeUser)
         val userName:TextView=findViewById(R.id.channelName)
         userType.setText(sharedPrefCurrentSesion.getString("type",""))
         userName.setText(sharedPrefCurrentSesion.getString("name",""))
 
-        val navController=findNavController(R.id.fragmentContainerView)
+
+        val navController=findNavController(R.id.fragmentContainerGuestView)
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

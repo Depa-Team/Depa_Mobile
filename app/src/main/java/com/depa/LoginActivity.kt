@@ -1,10 +1,8 @@
 package com.depa
 
-import Beans.Post
 import Beans.Usuarios
 import Interface.PlaceHolder
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
@@ -12,8 +10,6 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import retrofit2.*
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -39,6 +35,7 @@ class LoginActivity : AppCompatActivity() {
         val signInRedirectButton: TextView=findViewById(R.id.signInRedirectButton)
 
         val sharedPref=getSharedPreferences("myPref", MODE_PRIVATE)
+        val sharedPrefCurrentSesion=getSharedPreferences("myCurrentSesion", MODE_PRIVATE)
 
 
 
@@ -55,6 +52,7 @@ class LoginActivity : AppCompatActivity() {
         }
 
         val intent= Intent(this, MainActivity::class.java)
+        val intentGuest=Intent(this,MainGuestActivity::class.java)
 
 
         logInButton.setOnClickListener(){
@@ -70,6 +68,13 @@ class LoginActivity : AppCompatActivity() {
                             for(user in UserList){
                                 if(userEmail.text.toString() == user.email && userPassword.text.toString()==user.password){
                                     val editor=sharedPref.edit()
+                                    val editorCurrentUser=sharedPrefCurrentSesion.edit()
+                                    editorCurrentUser.putString("email",user.email)
+                                    editorCurrentUser.putString("password",user.password)
+                                    editorCurrentUser.putString("name",user.name)
+                                    editorCurrentUser.putString("type",user.type)
+                                    editorCurrentUser.putString("plan",user.plan)
+                                    editorCurrentUser.commit()
                                     if (checkBoxCredenciales.isChecked){
                                         editor.putString("val","true")
                                         editor.putString("email",userEmail.text.toString())
@@ -81,9 +86,16 @@ class LoginActivity : AppCompatActivity() {
                                         editor.putString("password","")
                                     }
                                     editor.commit()
-                                    Toast.makeText(this@LoginActivity,user.type.toString(),Toast.LENGTH_SHORT).show()
-                                    startActivity(intent)
-                                    return
+                                    if(user.type=="manager"){
+                                        startActivity(intent)
+                                        Toast.makeText(this@LoginActivity,user.type.toString(),Toast.LENGTH_SHORT).show()
+                                        return
+                                    }else{
+                                        startActivity(intentGuest)
+                                        Toast.makeText(this@LoginActivity,user.type.toString(),Toast.LENGTH_SHORT).show()
+                                        return
+                                    }
+
                                 }
                             }
                             Toast.makeText(this@LoginActivity,"Usuario o contraseña incorrectas",Toast.LENGTH_SHORT).show()
