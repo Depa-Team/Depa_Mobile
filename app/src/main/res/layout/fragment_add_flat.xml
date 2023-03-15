@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".Dialogs.AddFlatFragment"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+
+    <TextView
+        android:id="@+id/txtFlat_id_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Departamento"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+    <EditText
+        android:id="@+id/txtFlat_id_add_name"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        android:drawableRight="@drawable/ic_home"
+        android:backgroundTint="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtFlat_id_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+
+    <TextView
+        android:id="@+id/txtFlat_id_cost"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mensualidad"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        app:layout_constraintTop_toBottomOf="@id/txtFlat_id_add_name"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <EditText
+        android:id="@+id/txtFlat_id_edit_cost"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:textSize="15dp"
+        android:textColor="#4C4C4C"
+        android:drawableRight="@drawable/ic_money"
+        android:drawableTint="@color/black"
+        android:backgroundTint="@color/black"
+        app:layout_constraintTop_toBottomOf="@id/txtFlat_id_cost"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/txtFlat_id_edit_cost"
+        app:layout_constraintStart_toStartOf="parent">
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/addFlatDialogButton"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Agregar"
+            app:cornerRadius="30dp"
+            app:strokeColor="@color/depa_def"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/cancelAddFlatDialogButton"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cancelar"
+            app:cornerRadius="30dp"
+            app:strokeColor="@color/depa_def"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"/>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

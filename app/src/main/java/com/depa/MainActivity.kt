@@ -1,11 +1,16 @@
 package com.depa
 
+import android.app.Dialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.Window
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
@@ -33,6 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         val logOutButton:ImageView=findViewById(R.id.logOutButton)
 
+
         toolbar=findViewById(R.id.myToolBar)
         setSupportActionBar(toolbar)
         drawerLayout=findViewById(R.id.drawer)
@@ -48,14 +54,13 @@ class MainActivity : AppCompatActivity() {
         navigationView.setupWithNavController(navController)
 
 
-
-
         logOutButton.setOnClickListener(){
             val intent= Intent(this, LoginActivity::class.java)
             startActivity(intent)
         }
 
     }
+
 
 
 

@@ -8,7 +8,8 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-    <color name="depa_light">#6B64ED</color>
+    <color name="depa_background_light">#ABB2F3</color>
+    <color name="depa_light">#6371F4</color>
     <color name="depa_def">#463ee0</color>
     <color name="depa_dark">#332CB8</color>
 </resources>
