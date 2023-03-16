@@ -11,7 +11,7 @@ interface PlaceHolder {
     @GET("users")
     fun getUsers():Call<List<Usuarios>>
 
-    @GET("/manager/{id}/flats")
+    @GET("manager/{id}/flats")
     fun getFlatsForManager(@Path("id")id:Int):Call<List<Flats>>
 
 

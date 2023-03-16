@@ -53,6 +53,7 @@ class LoginActivity : AppCompatActivity() {
 
         val intent= Intent(this, MainActivity::class.java)
         val intentGuest=Intent(this,MainGuestActivity::class.java)
+        //val test=Intent(this, TestActivity::class.java)
 
 
         logInButton.setOnClickListener(){
@@ -89,11 +90,11 @@ class LoginActivity : AppCompatActivity() {
                                     editor.commit()
                                     if(user.type=="manager"){
                                         startActivity(intent)
-                                        Toast.makeText(this@LoginActivity,user.type.toString(),Toast.LENGTH_SHORT).show()
+                                        //Toast.makeText(this@LoginActivity,user.type.toString(),Toast.LENGTH_SHORT).show()
                                         return
                                     }else{
                                         startActivity(intentGuest)
-                                        Toast.makeText(this@LoginActivity,user.type.toString(),Toast.LENGTH_SHORT).show()
+                                        //Toast.makeText(this@LoginActivity,user.type.toString(),Toast.LENGTH_SHORT).show()
                                         return
                                     }
 

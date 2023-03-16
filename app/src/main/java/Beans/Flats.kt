@@ -3,11 +3,11 @@ package Beans
 class Flats {
     var flatName:String
     var managerId:Int
-    var guestId:Int
-    var initialDate:String
-    var endDate:String
+    var guestId:Int?
+    var initialDate:String?
+    var endDate:String?
     var status:Boolean
-    var price:Int
+    var price:Int?
     var id:Int
 
     constructor(flatName: String, managerId: Int, guestId: Int, initialDate: String, endDate: String, status: Boolean, price: Int, id: Int
