@@ -10,7 +10,7 @@
 
 
     <TextView
-        android:id="@+id/txtInquilino"
+        android:id="@+id/txtEditInquilino"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,7 +19,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintLeft_toRightOf="@id/txtInquilino"
+        app:layout_constraintLeft_toRightOf="@id/txtEditInquilino"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Alonso Sanchez "/>
 
@@ -30,7 +30,7 @@
         android:text="Departamento"
         android:textSize="15dp"
         android:textColor="#4C4C4C"
-        app:layout_constraintTop_toBottomOf="@id/txtInquilino"
+        app:layout_constraintTop_toBottomOf="@id/txtEditInquilino"
         app:layout_constraintStart_toStartOf="parent"
         />
     <EditText

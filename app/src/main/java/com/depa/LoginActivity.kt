@@ -21,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://my-json-server.typicode.com/Depa-Team/Depa-json/")
             .addConverterFactory(GsonConverterFactory.create())

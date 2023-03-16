@@ -30,34 +30,7 @@ class TestActivity : AppCompatActivity() {
             .build()
 
         service=retrofit.create<PlaceHolder>(PlaceHolder::class.java)
-        getFlats()
     }
 
-    fun getFlats(){
-        val sharedPref=getSharedPreferences("myCurrentSesion", MODE_PRIVATE)
-
-        service.getFlatsForManager(1).enqueue(object :Callback<List<Flats>>{
-            override fun onResponse(call: Call<List<Flats>>, response: Response<List<Flats>>) {
-                val flatResponse=response?.body()
-                val listaFlats= mutableListOf<Flats>()
-
-                if(flatResponse!=null){
-                    for(flat in flatResponse){
-                        listaFlats.add(Flats(flat.flatName,flat.managerId.toString().toInt(),1,"11/02/05","11/02/05",true,100,flat.id.toString().toInt()))
-                    }
-                    val recycler=findViewById<RecyclerView>(R.id.recyclerFlatsTEST)
-                    recycler.layoutManager=LinearLayoutManager(applicationContext)
-                    recycler.adapter=FlatAdapter(listaFlats)
-                }
-
-            }
-
-            override fun onFailure(call: Call<List<Flats>>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-
-        })
-
-    }
 
 }

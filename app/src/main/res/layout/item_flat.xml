@@ -55,13 +55,12 @@
                     android:layout_height="wrap_content"
                     android:text="Mensualidad: 400 S/."
                     android:textStyle="bold"/>
-                <com.google.android.material.button.MaterialButton
-                    style="@style/Widget.MaterialComponents.Button"
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Acciones"
                     app:cornerRadius="30dp"
-                    app:strokeColor="@color/depa_def"/>
+                    android:text="Acciones"
+                    android:id="@+id/btnAcciones"/>
 
             </LinearLayout>
             <ImageView

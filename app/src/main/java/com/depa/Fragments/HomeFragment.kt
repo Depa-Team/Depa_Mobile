@@ -15,7 +15,9 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.depa.Adapters.FlatAdapter
+import com.depa.Adapters.FlatAdapterListener
 import com.depa.Dialogs.AddFlatFragment
+import com.depa.Dialogs.EditFlatFragment
 import com.depa.R
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,7 +26,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(),FlatAdapterListener {
 
     private lateinit var adapterFlat: FlatAdapter
     private lateinit var recyclerView: RecyclerView
@@ -38,6 +40,8 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val AddFlatButton: Button =view.findViewById(R.id.addFlatButton)
+
         val retrofit = Retrofit.Builder()
             .baseUrl("https://my-json-server.typicode.com/Depa-Team/Depa-json/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -49,18 +53,18 @@ class HomeFragment : Fragment() {
         val preferences = this.requireActivity().getSharedPreferences("myCurrentSesion", Context.MODE_PRIVATE)
         service.getFlatsForManager(preferences.getString("id","").toString().toInt()).enqueue(object : Callback<List<Flats>>{
             override fun onResponse(call: Call<List<Flats>>, response: Response<List<Flats>>) {
-                val flatResponse=response?.body()
+                val flatResponse=response.body()
                 val listaFlats= mutableListOf<Flats>()
                 if(flatResponse!=null){
                     for(flat in flatResponse){
-                        Toast.makeText(context,flat.flatName.toString(),Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(context,flat.flatName.toString(),Toast.LENGTH_SHORT).show()
                         listaFlats.add(Flats(flat.flatName,flat.managerId,0,"-","-",true,100,flat.id.toString().toInt()))
                     }
                     val layoutManager=LinearLayoutManager(context)
                     recyclerView=view.findViewById(R.id.recyclerFlats)
                     recyclerView.layoutManager=layoutManager
                     recyclerView.setHasFixedSize(true)
-                    adapterFlat= FlatAdapter(listaFlats)
+                    adapterFlat= FlatAdapter(listaFlats,this@HomeFragment)
                     recyclerView.adapter=adapterFlat
                 }
             }
@@ -71,17 +75,21 @@ class HomeFragment : Fragment() {
 
         })
 
+        AddFlatButton.setOnClickListener(){
+            val showPopUP= AddFlatFragment()
+            showPopUP.show((activity as AppCompatActivity).supportFragmentManager,"showPopUp")
 
 
+        }
 
 
     }
 
+    override fun onActionsItemClick(flat: Flats) {
+        val showPopUP= EditFlatFragment(flat)
+        showPopUP.show((activity as AppCompatActivity).supportFragmentManager,"showPopUp")
 
-
-
-
-
+    }
 
 
 }
