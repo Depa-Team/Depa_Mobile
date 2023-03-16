@@ -38,17 +38,45 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val listaFlats= mutableListOf<Flats>()
-        listaFlats.add(Flats("A",1,1,"-","-",true,100,1))
-        listaFlats.add(Flats("A2",1,1,"-","-",true,100,2))
+        val retrofit = Retrofit.Builder()
+            .baseUrl("https://my-json-server.typicode.com/Depa-Team/Depa-json/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        service=retrofit.create<PlaceHolder>(PlaceHolder::class.java)
 
-        val layoutManager=LinearLayoutManager(context)
-        recyclerView=view.findViewById(R.id.recyclerFlats)
-        recyclerView.layoutManager=layoutManager
-        recyclerView.setHasFixedSize(true)
-        adapterFlat= FlatAdapter(listaFlats)
-        recyclerView.adapter=adapterFlat
+
+
+        val preferences = this.requireActivity().getSharedPreferences("myCurrentSesion", Context.MODE_PRIVATE)
+        service.getFlatsForManager(preferences.getString("id","").toString().toInt()).enqueue(object : Callback<List<Flats>>{
+            override fun onResponse(call: Call<List<Flats>>, response: Response<List<Flats>>) {
+                val flatResponse=response?.body()
+                val listaFlats= mutableListOf<Flats>()
+                if(flatResponse!=null){
+                    for(flat in flatResponse){
+                        Toast.makeText(context,flat.flatName.toString(),Toast.LENGTH_SHORT).show()
+                        listaFlats.add(Flats(flat.flatName,flat.managerId,0,"-","-",true,100,flat.id.toString().toInt()))
+                    }
+                    val layoutManager=LinearLayoutManager(context)
+                    recyclerView=view.findViewById(R.id.recyclerFlats)
+                    recyclerView.layoutManager=layoutManager
+                    recyclerView.setHasFixedSize(true)
+                    adapterFlat= FlatAdapter(listaFlats)
+                    recyclerView.adapter=adapterFlat
+                }
+            }
+
+            override fun onFailure(call: Call<List<Flats>>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+
+        })
+
+
+
+
+
     }
+
 
 
 
