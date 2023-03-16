@@ -67,6 +67,10 @@ class EditFlatFragment(flat: Flats) : DialogFragment() {
         editFlatDialogButton.setOnClickListener(){
             dismiss()
         }
+        val cancelEditFlatDialogButton=view.findViewById<Button>(R.id.cancelEditFlatDialogButton)
+        cancelEditFlatDialogButton.setOnClickListener(){
+            dismiss()
+        }
 
     }
 

@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.depa.Adapters.FlatAdapter
 import com.depa.Adapters.FlatAdapterListener
 import com.depa.Dialogs.AddFlatFragment
+import com.depa.Dialogs.AddGuestFragment
 import com.depa.Dialogs.EditFlatFragment
 import com.depa.R
 import retrofit2.Call
@@ -93,7 +94,7 @@ class HomeFragment : Fragment(),FlatAdapterListener {
 
     override fun onActionsItemClick(flat: Flats) {
         if(flat.status){
-            val showPopUP= EditFlatFragment(flat)
+            val showPopUP= AddGuestFragment()
             showPopUP.show((activity as AppCompatActivity).supportFragmentManager,"showPopUp")
         }else{
             val showPopUP= EditFlatFragment(flat)
