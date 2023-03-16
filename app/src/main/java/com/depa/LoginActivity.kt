@@ -74,6 +74,7 @@ class LoginActivity : AppCompatActivity() {
                                     editorCurrentUser.putString("name",user.name)
                                     editorCurrentUser.putString("type",user.type)
                                     editorCurrentUser.putString("plan",user.plan)
+                                    editorCurrentUser.putString("id", user.id.toString())
                                     editorCurrentUser.commit()
                                     if (checkBoxCredenciales.isChecked){
                                         editor.putString("val","true")

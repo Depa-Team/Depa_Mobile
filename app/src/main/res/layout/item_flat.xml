@@ -30,6 +30,7 @@
                     android:padding="15dp">
 
                     <TextView
+                        android:id="@+id/flat_card_label"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Disponible"
@@ -40,16 +41,19 @@
                         android:layout_marginBottom="7dp"
                         />
                     <TextView
+                        android:id="@+id/flat_card_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="A-001"
                         android:textStyle="bold"/>
                     <TextView
+                        android:id="@+id/guest_card_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Inquilino: Alonso Sanchez"
                         android:textStyle="bold"/>
                     <TextView
+                        android:id="@+id/payment_card_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Mensualidad: 400 S/."
