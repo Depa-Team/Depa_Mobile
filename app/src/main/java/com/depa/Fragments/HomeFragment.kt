@@ -49,7 +49,6 @@ class HomeFragment : Fragment(),FlatAdapterListener {
         service=retrofit.create<PlaceHolder>(PlaceHolder::class.java)
 
 
-
         val preferences = this.requireActivity().getSharedPreferences("myCurrentSesion", Context.MODE_PRIVATE)
         service.getFlatsForManager(preferences.getString("id","").toString().toInt()).enqueue(object : Callback<List<Flats>>{
             override fun onResponse(call: Call<List<Flats>>, response: Response<List<Flats>>) {
@@ -58,7 +57,15 @@ class HomeFragment : Fragment(),FlatAdapterListener {
                 if(flatResponse!=null){
                     for(flat in flatResponse){
                         //Toast.makeText(context,flat.flatName.toString(),Toast.LENGTH_SHORT).show()
-                        listaFlats.add(Flats(flat.flatName,flat.managerId,0,"-","-",true,100,flat.id.toString().toInt()))
+                        listaFlats.add(Flats(
+                            flat.flatName,
+                            flat.managerId,
+                            flat.guestId,
+                            "-",
+                            "-",
+                            flat.status,
+                            100,
+                            flat.id.toString().toInt()))
                     }
                     val layoutManager=LinearLayoutManager(context)
                     recyclerView=view.findViewById(R.id.recyclerFlats)
@@ -82,12 +89,17 @@ class HomeFragment : Fragment(),FlatAdapterListener {
 
         }
 
-
     }
 
     override fun onActionsItemClick(flat: Flats) {
-        val showPopUP= EditFlatFragment(flat)
-        showPopUP.show((activity as AppCompatActivity).supportFragmentManager,"showPopUp")
+        if(flat.status){
+            val showPopUP= EditFlatFragment(flat)
+            showPopUP.show((activity as AppCompatActivity).supportFragmentManager,"showPopUp")
+        }else{
+            val showPopUP= EditFlatFragment(flat)
+            showPopUP.show((activity as AppCompatActivity).supportFragmentManager,"showPopUp")
+        }
+
 
     }
 

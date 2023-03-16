@@ -17,11 +17,11 @@
         app:layout_constraintTop_toTopOf="parent"
         android:text="Inquilino: "/>
     <TextView
+        android:id="@+id/txtEditInquilinoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@id/txtEditInquilino"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Alonso Sanchez "/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txtFlat_id_name"

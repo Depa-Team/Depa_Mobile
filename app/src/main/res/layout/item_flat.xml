@@ -47,13 +47,13 @@
                     android:id="@+id/guest_card_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Inquilino: Alonso Sanchez"
+                    android:text="Inquilino: "
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/payment_card_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Mensualidad: 400 S/."
+                    android:text="Mensualidad: "
                     android:textStyle="bold"/>
                 <Button
                     android:layout_width="match_parent"

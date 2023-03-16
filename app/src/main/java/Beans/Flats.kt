@@ -10,15 +10,25 @@ class Flats {
     var price:Int?
     var id:Int
 
-    constructor(flatName: String, managerId: Int, guestId: Int, initialDate: String, endDate: String, status: Boolean, price: Int, id: Int
+    constructor(flatName: String, managerId: Int, guestId: Int?, initialDate: String?, endDate: String?, status: Boolean, price: Int?, id: Int
     ) {
         this.flatName = flatName
         this.managerId = managerId
-        this.guestId = guestId
-        this.initialDate = initialDate
-        this.endDate = endDate
         this.status = status
-        this.price = price
         this.id = id
+        if(status){
+            this.guestId = 0
+            this.initialDate = " "
+            this.endDate = " "
+            this.price = 0
+        }
+        else{
+            this.guestId = guestId
+            this.initialDate = initialDate
+            this.endDate = endDate
+            this.price = price
+
+        }
+
     }
 }
