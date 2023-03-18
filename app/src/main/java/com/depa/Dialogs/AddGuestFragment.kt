@@ -28,6 +28,7 @@ class AddGuestFragment : DialogFragment() {
         val txtFlat_id_add_name: EditText =view.findViewById(R.id.txtFlat_id_add_name)
         val txtFlat_id_add_email: EditText =view.findViewById(R.id.txtFlat_id_add_email)
         val txtFlat_id_add_password: EditText =view.findViewById(R.id.txtFlat_id_add_password)
+        val txtFlat_id_add_phone: EditText =view.findViewById(R.id.txtFlat_id_add_phone)
 
         val accept_add_guest: Button =view.findViewById(R.id.accept_add_guest)
         accept_add_guest.setOnClickListener(){

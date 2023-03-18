@@ -75,6 +75,7 @@ class LoginActivity : AppCompatActivity() {
                                     editorCurrentUser.putString("password",user.password)
                                     editorCurrentUser.putString("name",user.name)
                                     editorCurrentUser.putString("type",user.type)
+                                    editorCurrentUser.putString("phoneNumber",user.phoneNumber.toString())
                                     editorCurrentUser.putString("plan",user.plan)
                                     editorCurrentUser.putString("id", user.id.toString())
                                     editorCurrentUser.commit()

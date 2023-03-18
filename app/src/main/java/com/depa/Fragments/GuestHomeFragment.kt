@@ -4,11 +4,14 @@ import Beans.Flats
 import Beans.Usuarios
 import Interface.PlaceHolder
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -44,6 +47,9 @@ class GuestHomeFragment : Fragment() {
         val txtMensualidad: TextView=view.findViewById(R.id.txtMensualidad)
         val id_advertisement: TextView=view.findViewById(R.id.id_advertisement)
         val txtContractAdvertisement: TextView=view.findViewById(R.id.txtContractAdvertisement)
+        val btn_call_manager: ImageView=view.findViewById(R.id.btn_call_manager)
+        var managerId: Int=0
+
 
 
         val preferences = this.requireActivity().getSharedPreferences("myCurrentSesion", Context.MODE_PRIVATE)
@@ -78,6 +84,7 @@ class GuestHomeFragment : Fragment() {
                         })
                         txtMensualidad.append(item.price.toString()+ " S/.")
                         txtContractAdvertisement.setText(getDeathLineForContract(item.endDate.toString()))
+                        managerId=item.managerId
                     }
                 }
             }
@@ -88,9 +95,25 @@ class GuestHomeFragment : Fragment() {
 
         })
 
-
         progress_bar.progress=getDayPorcentageLeft()
         text_view_progress.setText(" Te quedan \n    "+getDayLeft()+" dias")
+        btn_call_manager.setOnClickListener(){
+            service.getUser(managerId.toString().toInt()).enqueue(object :Callback<Usuarios>{
+                override fun onResponse(call: Call<Usuarios>, response: Response<Usuarios>) {
+                    val usu=response.body()
+                    if(usu!=null){
+                        val intent: Intent = Intent(Intent.ACTION_DIAL)
+                        intent.setData(Uri.parse("tel:"+usu.phoneNumber.toString()))
+                        startActivity(intent)
+                    }
+                }
+
+                override fun onFailure(call: Call<Usuarios>, t: Throwable) {
+                    t.suppressedExceptions
+                }
+
+            })
+        }
     }
     fun getDeathLineDateForMontlyPayment():String{
         val calc= Calculator()

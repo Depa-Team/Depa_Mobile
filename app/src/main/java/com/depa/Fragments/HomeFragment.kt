@@ -1,8 +1,12 @@
 package com.depa.Fragments
 
 import Beans.Flats
+import Beans.Usuarios
 import Interface.PlaceHolder
 import android.content.Context
+import android.content.Intent
+import android.content.Intent.ACTION_DIAL
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -71,7 +75,7 @@ class HomeFragment : Fragment(),FlatAdapterListener {
                             "-",
                             "-",
                             flat.status,
-                            100,
+                            flat.price,
                             flat.id.toString().toInt()))
                     }
                     val layoutManager=LinearLayoutManager(context)
@@ -106,6 +110,26 @@ class HomeFragment : Fragment(),FlatAdapterListener {
             val showPopUP= EditFlatFragment(flat)
             showPopUP.show((activity as AppCompatActivity).supportFragmentManager,"showPopUp")
         }
+
+
+    }
+
+    override fun onActionsItemCall(flat: Flats) {
+        service.getUser(flat.guestId.toString().toInt()).enqueue(object :Callback<Usuarios>{
+            override fun onResponse(call: Call<Usuarios>, response: Response<Usuarios>) {
+                val usu=response.body()
+                if(usu!=null){
+                    val intent: Intent=Intent(ACTION_DIAL)
+                    intent.setData(Uri.parse("tel:"+usu.phoneNumber.toString()))
+                    startActivity(intent)
+                }
+            }
+
+            override fun onFailure(call: Call<Usuarios>, t: Throwable) {
+                t.suppressedExceptions
+            }
+
+        })
 
 
     }

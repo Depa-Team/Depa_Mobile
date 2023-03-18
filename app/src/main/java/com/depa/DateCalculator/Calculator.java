@@ -50,7 +50,6 @@ public class Calculator {
         }
         return mesString;
     }
-
     public double getDayPorcentageLeft(int actual){
         Calendar cal = Calendar.getInstance();
         int res = cal.getActualMaximum(Calendar.DATE);

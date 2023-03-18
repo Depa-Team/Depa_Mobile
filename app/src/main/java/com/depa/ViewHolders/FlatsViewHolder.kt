@@ -6,8 +6,10 @@ import Interface.PlaceHolder
 import android.graphics.Color
 import android.view.View
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.graphics.red
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.depa.R
 import retrofit2.Call
@@ -25,11 +27,14 @@ class FlatsViewHolder(view:View):RecyclerView.ViewHolder(view) {
     val guest_card_name=view.findViewById<TextView>(R.id.guest_card_name)
     val payment_card_value=view.findViewById<TextView>(R.id.payment_card_value)
     val btn_acciones=view.findViewById<Button>(R.id.btnAcciones)
+    val btn_call_guest=view.findViewById<ImageView>(R.id.btn_call_guest)
+
 
     fun render(flatModel: Flats){
         if(flatModel.status==true){
             flat_card_label.text = "Disponible"
             btn_acciones.setText("Agregar")
+            btn_call_guest.isVisible=false
         }
         else{
             flat_card_label.text = "Ocupado"
@@ -52,7 +57,7 @@ class FlatsViewHolder(view:View):RecyclerView.ViewHolder(view) {
                 }
 
                 override fun onFailure(call: Call<Usuarios>, t: Throwable) {
-                    TODO("Not yet implemented")
+                    t.suppressedExceptions
                 }
             })
         }

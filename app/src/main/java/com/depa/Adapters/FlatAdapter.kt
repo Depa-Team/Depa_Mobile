@@ -29,6 +29,9 @@ class FlatAdapter(
         holder.btn_acciones.setOnClickListener(){
             listener.onActionsItemClick(item)
         }
+        holder.btn_call_guest.setOnClickListener(){
+            listener.onActionsItemCall(item)
+        }
     }
 
 }
