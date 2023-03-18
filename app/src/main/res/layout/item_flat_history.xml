@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="7dp"
+    app:cardUseCompatPadding="true"
+    app:cardElevation="5dp"
+    android:layout_marginHorizontal="20dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="#EDEDED">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:paddingTop="1dp"
+            android:paddingHorizontal="15dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingTop="15dp">
+
+                <TextView
+                    android:id="@+id/flat_card_history_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:paddingBottom="1dp"/>
+                <ImageView
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    android:src="@drawable/ic_contract"
+                    android:layout_gravity="center"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/guest_card_history_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Inquilino: "
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/payment_card_history_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Mensualidad: "
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/date_card_history_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Entrada: "
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/date_card_history_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Salida: "
+                    android:textStyle="bold"/>
+                <Button
+                    android:layout_width="160dp"
+                    android:layout_height="40dp"
+                    app:cornerRadius="10dp"
+                    android:text="Eliminar"
+                    android:backgroundTint="#6E6E6E"
+                    android:id="@+id/btnDelete_history"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -41,7 +42,14 @@ class HomeFragment : Fragment(),FlatAdapterListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val preferences = this.requireActivity().getSharedPreferences("myCurrentSesion", Context.MODE_PRIVATE)
+
         val AddFlatButton: Button =view.findViewById(R.id.addFlatButton)
+        val greeting_manager_home: TextView=view.findViewById(R.id.greeting_manager_home)
+
+
+
+        greeting_manager_home.setText("Hola, "+preferences.getString("name","")+" !")
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://my-json-server.typicode.com/Depa-Team/Depa-json/")
@@ -49,8 +57,6 @@ class HomeFragment : Fragment(),FlatAdapterListener {
             .build()
         service=retrofit.create<PlaceHolder>(PlaceHolder::class.java)
 
-
-        val preferences = this.requireActivity().getSharedPreferences("myCurrentSesion", Context.MODE_PRIVATE)
         service.getFlatsForManager(preferences.getString("id","").toString().toInt()).enqueue(object : Callback<List<Flats>>{
             override fun onResponse(call: Call<List<Flats>>, response: Response<List<Flats>>) {
                 val flatResponse=response.body()

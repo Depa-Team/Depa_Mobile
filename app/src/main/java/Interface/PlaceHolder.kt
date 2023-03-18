@@ -1,6 +1,7 @@
 package Interface
 
 import Beans.Flats
+import Beans.History
 import retrofit2.Call
 import retrofit2.http.GET
 import Beans.Usuarios
@@ -16,6 +17,9 @@ interface PlaceHolder {
 
     @GET("manager/{id}/flats")
     fun getFlatsForManager(@Path("id")id:Int):Call<List<Flats>>
+
+    @GET("manager/{id}/history")
+    fun getHistoryForManager(@Path("id")id:Int):Call<List<History>>
 
 
 }
