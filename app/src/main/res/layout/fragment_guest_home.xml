@@ -17,9 +17,10 @@
         android:textStyle="bold"
         android:textSize="20dp"/>
     <TextView
+        android:id="@+id/id_advertisement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Tu proximo pago vence el 14 de febrero 2023"
+        android:text="Tu proximo pago vence el "
         android:textSize="15dp"
         android:layout_marginTop="10dp"/>
     <androidx.constraintlayout.widget.ConstraintLayout

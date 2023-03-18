@@ -12,16 +12,20 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import com.depa.DateCalculator.Calculator
 import com.depa.R
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.text.SimpleDateFormat
+import java.time.LocalTime
+import java.util.Date
+import kotlin.math.truncate
 
 class GuestHomeFragment : Fragment() {
     lateinit var service:PlaceHolder
-    private var progress=10
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -38,12 +42,15 @@ class GuestHomeFragment : Fragment() {
         val greetings_guest_home: TextView=view.findViewById(R.id.greetings_guest_home)
         val txtCaseroCall: TextView=view.findViewById(R.id.txtCaseroCall)
         val txtMensualidad: TextView=view.findViewById(R.id.txtMensualidad)
-
-
+        val id_advertisement: TextView=view.findViewById(R.id.id_advertisement)
 
         val preferences = this.requireActivity().getSharedPreferences("myCurrentSesion", Context.MODE_PRIVATE)
 
         greetings_guest_home.setText("Hola, "+preferences.getString("name","")+" !")
+
+
+        //14 de febrero 2023
+        id_advertisement.setText(getDeathLineDateForMontlyPayment())
 
         val retrofit = Retrofit.Builder()
             .baseUrl("https://my-json-server.typicode.com/Depa-Team/Depa-json/")
@@ -78,31 +85,29 @@ class GuestHomeFragment : Fragment() {
 
         })
 
-        /*service.getCaseroForGuest(2).enqueue(object :Callback<Flats>{
-            override fun onResponse(call: Call<Flats>, response: Response<Flats>) {
-                val flat_=response.body()
-                if (flat_ != null) {
-                    service.getUser(flat_.managerId.toString().toInt()).enqueue(object :Callback<Usuarios>{
-                        override fun onResponse(call: Call<Usuarios>, response: Response<Usuarios>) {
-                            txtCaseroCall.append(response.body()?.name.toString())
-                        }
 
-                        override fun onFailure(call: Call<Usuarios>, t: Throwable) {
-                            t.suppressedExceptions
-                        }
+        progress_bar.progress=getDayPorcentageLeft()
+        text_view_progress.setText(" Te quedan \n    "+getDayLeft()+" dias")
+    }
+    fun getDeathLineDateForMontlyPayment():String{
+        val calc= Calculator()
+        var datePhrase="Tu proximo pago vence el "
 
-                    })
-                }
-            }
+        val dateFormatMonth = SimpleDateFormat("MMM").format(Date())
+        val dateFormatYear = SimpleDateFormat("yyyy").format(Date())
 
-            override fun onFailure(call: Call<Flats>, t: Throwable) {
-                t.suppressedExceptions
-            }
+        datePhrase+=calc.deathLineDateForMontlyPayment+" "+dateFormatYear
+        return datePhrase.toString()
+    }
+    fun getDayLeft():Int{
+        val calc= Calculator()
+        val dateFormatday = SimpleDateFormat("d").format(Date())
+        return calc.getDayLeft(dateFormatday.toInt())
+    }
 
-        })*/
-
-
-        progress_bar.progress=progress
-        text_view_progress.setText(" Te quedan \n    30 dias")
+    fun getDayPorcentageLeft(): Int {
+        val calc= Calculator()
+        val dateFormatday = SimpleDateFormat("d").format(Date())
+        return calc.getDayPorcentageLeft(dateFormatday.toInt()).toInt()
     }
 }
