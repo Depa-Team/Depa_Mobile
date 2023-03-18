@@ -21,5 +21,10 @@ interface PlaceHolder {
     @GET("manager/{id}/history")
     fun getHistoryForManager(@Path("id")id:Int):Call<List<History>>
 
+    @GET("guest/{id}/flats")
+    fun getCaseroForGuest(@Path("id")id:Int):Call<List<Flats>>
+
+
+
 
 }

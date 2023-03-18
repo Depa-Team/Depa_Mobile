@@ -5,12 +5,29 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".Fragments.HistoryFragment"
-    android:layout_marginTop="60dp">
+    android:layout_marginTop="75dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/greeting_manager_home"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Historial"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginLeft="30dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lleva un registro de tus inquilinos"
+            android:textSize="15dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="30dp"/>
+
         <com.google.android.material.button.MaterialButton
             style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
@@ -18,10 +35,12 @@
             android:text="Borrar historial"
             app:cornerRadius="10dp"
             android:layout_marginHorizontal="40dp"
+            android:layout_marginVertical="20dp"
             android:id="@+id/deleteHistoryButton" />
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            tools:listitem="@layout/item_flat_history"
             android:id="@+id/recyclerHistory"/>
     </LinearLayout>
 
