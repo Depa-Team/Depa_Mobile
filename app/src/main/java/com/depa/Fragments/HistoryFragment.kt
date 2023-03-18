@@ -74,7 +74,7 @@ class HistoryFragment : Fragment(),HistoryAdapterListener {
             }
 
             override fun onFailure(call: Call<List<History>>, t: Throwable) {
-                TODO("Not yet implemented")
+                t.suppressedExceptions
             }
 
         })

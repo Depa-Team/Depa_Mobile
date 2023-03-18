@@ -84,7 +84,7 @@ class HomeFragment : Fragment(),FlatAdapterListener {
             }
 
             override fun onFailure(call: Call<List<Flats>>, t: Throwable) {
-                TODO("Not yet implemented")
+                t.suppressedExceptions
             }
 
         })

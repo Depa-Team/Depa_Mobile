@@ -13,6 +13,11 @@ public class Calculator {
         String result=String.valueOf(res);
         return result+" de "+ getMesEspañol(mes) ;
     }
+    public String getDeathLineForContract(int day,int month){
+        Calendar c1 = Calendar.getInstance();
+
+        return day+" de "+ getMesEspañol(month) ;
+    }
     public String getMesEspañol(int mes){
         String mesString;
         switch (mes) {

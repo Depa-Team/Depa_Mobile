@@ -164,11 +164,12 @@
                 android:textColor="@color/white"
                 android:shadowColor="@color/black"/>
             <TextView
+                android:id="@+id/txtContractAdvertisement"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="15dp"
-                android:text="Tu contrato termina el 17 de marzo de 2023"
+                android:text="Tu contrato termina el "
                 android:textColor="@color/white"
                 android:textSize="15dp" />
         </LinearLayout>

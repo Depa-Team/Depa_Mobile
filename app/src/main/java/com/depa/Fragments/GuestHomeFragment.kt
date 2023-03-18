@@ -43,6 +43,8 @@ class GuestHomeFragment : Fragment() {
         val txtCaseroCall: TextView=view.findViewById(R.id.txtCaseroCall)
         val txtMensualidad: TextView=view.findViewById(R.id.txtMensualidad)
         val id_advertisement: TextView=view.findViewById(R.id.id_advertisement)
+        val txtContractAdvertisement: TextView=view.findViewById(R.id.txtContractAdvertisement)
+
 
         val preferences = this.requireActivity().getSharedPreferences("myCurrentSesion", Context.MODE_PRIVATE)
 
@@ -58,7 +60,7 @@ class GuestHomeFragment : Fragment() {
             .build()
         service=retrofit.create<PlaceHolder>(PlaceHolder::class.java)
 
-        service.getCaseroForGuest(2).enqueue(object :Callback<List<Flats>>{
+        service.getCaseroForGuest(preferences.getString("id","").toString().toInt()).enqueue(object :Callback<List<Flats>>{
             override fun onResponse(call: Call<List<Flats>>, response: Response<List<Flats>>) {
                 if(response.body()!=null){
                     for (item in response.body()!!){
@@ -71,16 +73,17 @@ class GuestHomeFragment : Fragment() {
                             }
 
                             override fun onFailure(call: Call<Usuarios>, t: Throwable) {
-                                TODO("Not yet implemented")
+                                t.suppressedExceptions
                             }
                         })
                         txtMensualidad.append(item.price.toString()+ " S/.")
+                        txtContractAdvertisement.setText(getDeathLineForContract(item.endDate.toString()))
                     }
                 }
             }
 
             override fun onFailure(call: Call<List<Flats>>, t: Throwable) {
-                TODO("Not yet implemented")
+                t.suppressedExceptions
             }
 
         })
@@ -109,5 +112,16 @@ class GuestHomeFragment : Fragment() {
         val calc= Calculator()
         val dateFormatday = SimpleDateFormat("d").format(Date())
         return calc.getDayPorcentageLeft(dateFormatday.toInt()).toInt()
+    }
+
+    fun getDeathLineForContract(endDate: String): String{
+        val calc= Calculator()
+        var datePhrase="Tu contrato termina el "
+        val delim = "/"
+        //val day: Int;val month:Int;val year:Int;
+        val list = endDate.split(delim)
+        datePhrase+=calc.getDeathLineForContract(list[0].toInt(),list[1].toInt())+" "+ list[2].toInt()
+        return datePhrase
+
     }
 }
